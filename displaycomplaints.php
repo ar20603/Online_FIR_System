@@ -16,12 +16,16 @@
 			margin-right: 10vw;
 			margin-top: 10vh;
 		}
+
+		body{
+			background-color: #ebebeb; 
+		}
 	</style>
 </head>
 <body>
 	<div class="complaintscontainer">
-		<table class="table table-hover">
-		  <thead class="thead-light">
+		<table class="table table-hover table-light">
+		  <thead class="thead">
 		    <tr>
 		      <th scope="col">S.No.</th>
 		      <th scope="col">Complaint ID</th>
@@ -33,6 +37,7 @@
 		      <th scope="col">Complaint</th>
 		      <th scope="col">Section</th>
 		      <th scope="col">Category</th>
+		      <th scope="col">Status</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -63,6 +68,13 @@
 				      <td><?php echo $row['Complaint'] ?></td>
 				      <td><?php echo $row['Section'] ?></td>
 				      <td><?php echo $row['Category'] ?></td>
+				      <td>
+				      	<form action="approvalASI.php" method="POST" >
+				      		<input type="hidden" name="sno" value="<?php echo $row['SNo'] ?>" >
+					      	<button type="submit" name="approve" class="btn btn-outline-success">Approve</button>
+					      	<button type="submit" name="reject" class="btn btn-outline-danger">Reject</button>
+				      	</form>
+				      </td>
 				    </tr>
 
 			<?php 
@@ -74,6 +86,8 @@
 		    {
 		    	echo "<h2>No pending complaints!</h2>";
 		    }
+
+		    $con->close();
 
 		    ?>
 
