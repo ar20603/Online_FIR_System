@@ -18,7 +18,7 @@
 		}
 
 		body{
-			background-color: #ebebeb; 
+			background-color: #ebebeb;
 		}
 	</style>
 </head>
@@ -41,7 +41,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    
+
 
 		    <?php
 		    $i =1;
@@ -71,15 +71,16 @@
 				      <td>
 				      	<form action="approvalASI.php" method="POST" >
 				      		<input type="hidden" name="sno" value="<?php echo $row['SNo'] ?>" >
+				      		<input type="hidden" name="cat" value="<?php echo $row['Category'] ?>" >
 					      	<button type="submit" name="approve" class="btn btn-outline-success">Approve</button>
 					      	<button type="submit" name="reject" class="btn btn-outline-danger">Reject</button>
 				      	</form>
 				      </td>
 				    </tr>
 
-			<?php 
+			<?php
 					$i++;
-		    	
+
 		    	}
 		    }
 		    else
