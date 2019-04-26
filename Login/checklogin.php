@@ -12,24 +12,35 @@
         if ($result->num_rows > 0)
         {
             session_start();
-            $row = mysqli_fetch_array($res);
+            $row = mysqli_fetch_array($result);
             if($row['Post']=="ASI")
             {
                 $_SESSION['email'] = $email;
                 $_SESSION['post'] = "ASI";
+                echo '<script>
                 window.location="../displaycomplaints.php";
+                </script>';
+
             }
             else if($row['Post']=="SI")
             {
                 $_SESSION['email'] = $email;
                 $_SESSION['post'] = "SI";
-                window.location="../displaycomplaints.php";
+                echo '<script>
+                window.location="../si_dash.php";
+                </script>';
             }
         }
         else
         {
-            window.location="login.html";
+            echo '<script>
             alert(“Wrong user name or password”);
+            </script>';
+            echo '<script>
+            window.location="login.html";
+            </script>';
+
+
         }
     }
 
