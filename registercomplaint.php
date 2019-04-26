@@ -38,7 +38,7 @@
           <div class="form-group">
             <label for="inputComplaint">Select Complaint Type</label>
             <select class="form-control" id="inputComplaint" name="typeComplaint">
-              <option>Attempt to murder</option>
+              <option>Attempt to Murder</option>
               <option>Theft</option>
               <option>Domestic Violence</option>
             </select>

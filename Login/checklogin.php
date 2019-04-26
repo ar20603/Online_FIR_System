@@ -33,14 +33,11 @@
         }
         else
         {
-            echo '<script>
-            alert(“Wrong user name or password”);
-            </script>';
+            $message = "Wrong credentials";
+            echo "<script type='text/javascript'>alert('$message');</script>";
             echo '<script>
             window.location="login.html";
             </script>';
-
-
         }
     }
 
