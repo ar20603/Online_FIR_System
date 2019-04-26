@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2019 at 10:32 AM
+-- Generation Time: Apr 26, 2019 at 10:37 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.17
 
@@ -34,16 +34,17 @@ CREATE TABLE `cops` (
   `Post` varchar(300) NOT NULL,
   `Category` varchar(300) NOT NULL,
   `Email` varchar(300) NOT NULL,
-  `Password` varchar(300) NOT NULL
+  `Password` varchar(300) NOT NULL,
+  `Count` bigint(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cops`
 --
 
-INSERT INTO `cops` (`id`, `Name`, `Post`, `Category`, `Email`, `Password`) VALUES
-(1, 'Pradhyuman', 'SI', 'murder', 'acppradhyuman@gmail.com', 'daya'),
-(3, 'Abhijeet', 'ASI', '', 'abhijeet@gmail.com', 'abhi');
+INSERT INTO `cops` (`id`, `Name`, `Post`, `Category`, `Email`, `Password`, `Count`) VALUES
+(1, 'Pradhyuman', 'SI', 'murder', 'acppradhyuman@gmail.com', 'daya', 0),
+(3, 'Abhijeet', 'ASI', '', 'abhijeet@gmail.com', 'abhi', 0);
 
 -- --------------------------------------------------------
 
