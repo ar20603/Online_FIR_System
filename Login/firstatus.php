@@ -19,13 +19,17 @@
             $age = $row['Age'];
             $address = $row['Address'];
             $incdate = $row['Inc_DateTime'];
+            $incDT = strtotime($incdate);
             $regdate = $row['Reg_DateTime'];
+            $regDT = strtotime($regdate);
             $complaint = $row['Complaint'];
             $section = $row['Section'];
             $category = $row['Category'];
             $approved = $row['Approved'];
             $siid = $row['SIID'];
             $stat = $row['Status'];
+
+            if($stat==NULL)$stat = "Not Updated";
 ?>
 <link rel="stylesheet" href="css/firstat.css">
 <div class="card">
@@ -33,14 +37,16 @@
  <p class="title">FIR No. <?php echo $row['SNo']?></p>
  <p>Age <?php echo $row['Age']?></p>
  <p>Address <?php echo $row['Address']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Age <?php echo $row['Age']?></p>
+ <p>Date of Incidence <?php echo date("d/m/y",$incDT)?></p>
+ <p>Time of Incidence <?php echo date("g:i A",$incDT)?></p>
+ <p>Date of Registration <?php echo date("d/m/y",$regDT)?></p>
+ <p>Time of Registration <?php echo date("g:i A",$regDT)?></p>
+ <p>Complaint <?php echo $row['Complaint']?></p>
+ <p>Section <?php echo $row['Section']?></p>
+ <p>Category <?php echo $row['Category']?></p>
+ <p>Approved <?php echo $row['Approved']?></p>
+ <p>Status <?php echo $row['Status']?></p>
+
  <p>
    <form action="../firgenerator.php" method="POST">
     <input type="hidden" name="sno" value="<?php echo $row['SNo'] ?>" >
