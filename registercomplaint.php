@@ -42,6 +42,7 @@
               <option>Attempt to Murder</option>
               <option>Theft</option>
               <option>Domestic Violence</option>
+              <option>Others</option>
             </select>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>

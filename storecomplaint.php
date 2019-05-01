@@ -25,6 +25,11 @@
 				$category = "Domestic Affairs";
 				break;
 
+			case 'Others':
+				$section = "999";
+				$category = "Others";
+				break;
+
 			default:
 				$section = "999";
 				$category = "Others";
