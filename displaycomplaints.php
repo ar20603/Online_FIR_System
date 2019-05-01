@@ -47,7 +47,7 @@
 		    $i =1;
 		    $con = mysqli_connect('localhost','root','','complaints');
 
-		    $query = "SELECT * from fir WHERE Approved = false";
+		    $query = "SELECT * from fir WHERE Approved = NULL";
 		    $res = mysqli_query($con,$query);
 		    $count = mysqli_num_rows($res);
 

@@ -48,8 +48,8 @@
 	{
 		$sno = $_POST['sno'];
 		$con = mysqli_connect('localhost','root','','complaints');
+		$query = "UPDATE fir set Approved = False WHERE SNo = '$sno'";
 
-	    $query = "DELETE from fir WHERE SNo = '$sno'";
 	    $result = $con->query($query);
 
 	    $con->close();
