@@ -42,27 +42,37 @@
 
         <?php
 
-          session_start();
-
-          $si_email = $_SESSION['email'];
-
-
+            session_start();
+            if( isset( $_SESSION['email'] ) ) {
+                    $si_email = $_SESSION['email'];
+               }else {
+                   echo '<script>
+                   window.location="login.html";
+                   </script>';
+               }
+          //
+          // $si_email = $_SESSION['email'];
           $con = mysqli_connect('localhost','root','','complaints');
 
           if ($con->connect_error) {
             die("Connection failed: " . $con->connect_error);
           }
 
-          $sql = "select id from si where email=$si_email";
+          echo $si_email;
+          $sql = "select * from cops where Email='$si_email'";
           $result = $con->query($sql);
-
-          $id = $result['id'];
+          $cid = 0;
+          if($result->num_rows > 0)
+  		    {
+  		    	$row = mysqli_fetch_array($result);
+                $cid = $row['id'];
+            }
 
           $con->close();
-
+          $i =1;
           $con = mysqli_connect('localhost','root','','complaints');
 
-          $sql = "select * from fir where SIID = $id";
+          $sql = "select * from fir where SIID = '$cid'";
           $result = $con->query($sql);
 
           if($result->num_rows > 0)
@@ -86,6 +96,7 @@
 				      	<form action="siupdatestatus.php" method="POST" >
                   <textarea name="comment"><?php echo $row['Status'] ?></textarea>
                   <input type="hidden" name="sno" value="<?php echo $row['SNo'] ?>" >
+                  <input type="hidden" name="cid" value="<?php echo $cid ?>" >
 					      	<button type="submit" name="submit" class="btn btn-outline-success">Submit</button>
 				      	</form>
 				      </td>
