@@ -4,7 +4,7 @@
  	<!-- Required meta tags -->
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+     	<link rel="stylesheet" href="Login/css/firstat.css">
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -20,8 +20,8 @@
  </head>
  <body>
  	<div class="complaintscontainer">
- 		<table class="table table-hover">
- 		  <thead class="thead-light">
+ 		<table class="table table-hover table-light">
+ 		  <thead class="thead">
  		    <tr>
  		      <th scope="col">S.No.</th>
  		      <th scope="col">Complaint ID</th>
@@ -34,7 +34,6 @@
  		      <th scope="col">Section</th>
  		      <th scope="col">Category</th>
           <th scope="col">Status</th>
-          <th scope="col">Action</th>
  		    </tr>
  		  </thead>
  		  <tbody>
@@ -58,7 +57,6 @@
             die("Connection failed: " . $con->connect_error);
           }
 
-          echo $si_email;
           $sql = "select * from cops where Email='$si_email'";
           $result = $con->query($sql);
           $cid = 0;
@@ -87,18 +85,30 @@
  				      <td><?php echo $row['Name'] ?></td>
  				      <td><?php echo $row['Age'] ?></td>
  				      <td><?php echo $row['Address'] ?></td>
- 				      <td><?php echo $row['Inc_DateTime'] ?></td>
- 				      <td><?php echo $row['Reg_DateTime'] ?></td>
+ 				      <td><?php echo date("d/m/y G:i A",strtotime($row['Inc_DateTime'])) ?></td>
+ 				      <td><?php echo date("d/m/y G:i A",strtotime($row['Reg_DateTime'])) ?></td>
  				      <td><?php echo $row['Complaint'] ?></td>
  				      <td><?php echo $row['Section'] ?></td>
  				      <td><?php echo $row['Category'] ?></td>
               <td>
+        <?php
+        if ($row['Status'] == NULL ) {
+            ?>
 				      	<form action="siupdatestatus.php" method="POST" >
-                  <textarea name="comment"><?php echo $row['Status'] ?></textarea>
+                  <div class="input-group flex-container "><textarea name="comment"><?php echo $row['Status'] ?></textarea><button style=" margin: 2px;width:100px;" type="submit" name="submit" class="btn btn-outline-success input-group-addon">Submit</button></div>
+
                   <input type="hidden" name="sno" value="<?php echo $row['SNo'] ?>" >
                   <input type="hidden" name="cid" value="<?php echo $cid ?>" >
-					      	<button type="submit" name="submit" class="btn btn-outline-success">Submit</button>
 				      	</form>
+
+        <?php
+    }
+    else {
+        ?>
+        <p style="color:green"><?php  echo "Submitted";?></p>
+        <?php
+        }
+         ?>
 				      </td>
  				    </tr>
 
