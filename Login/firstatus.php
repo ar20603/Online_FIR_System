@@ -1,3 +1,6 @@
+<html>
+<head></head>
+<body>
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST')
     {
@@ -11,18 +14,43 @@
         if ($result->num_rows > 0)
         {
             $row = mysqli_fetch_array($result);
-            echo $row['SNo'];
-            echo $row['Name'];
-            echo $row['Age'];
-            echo $row['Address'];
-            echo $row['Inc_DateTime'];
-            echo $row['Reg_DateTime'];
-            echo $row['Complaint'];
-            echo $row['Section'];
-            echo $row['Category'];
-            echo $row['Approved'];
-            echo $row['SIID'];
-            echo $row['Status'];
+            $fno = $row['SNo'];
+            $name = $row['Name'];
+            $age = $row['Age'];
+            $address = $row['Address'];
+            $incdate = $row['Inc_DateTime'];
+            $regdate = $row['Reg_DateTime'];
+            $complaint = $row['Complaint'];
+            $section = $row['Section'];
+            $category = $row['Category'];
+            $approved = $row['Approved'];
+            $siid = $row['SIID'];
+            $stat = $row['Status'];
+?>
+<link rel="stylesheet" href="css/firstat.css">
+<div class="card">
+ <h1><?php echo $row['Name']?></h1>
+ <p class="title">FIR No. <?php echo $row['SNo']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Address <?php echo $row['Address']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>Age <?php echo $row['Age']?></p>
+ <p>
+   <form action="../firgenerator.php" method="POST">
+    <input type="hidden" name="sno" value="<?php echo $row['SNo'] ?>" >
+    <button type="submit" name="dfir">Download FIR</button>
+  </form>
+</p>
+</div>
+
+
+<?php
         }
         else
         {
@@ -35,3 +63,5 @@
     }
 
  ?>
+ </html>
+</body>
