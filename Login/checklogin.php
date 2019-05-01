@@ -15,8 +15,8 @@
             $row = mysqli_fetch_array($result);
             if($row['Post']=="ASI")
             {
-                $_SESSION['email'] = $email;
-                $_SESSION['post'] = "ASI";
+                    $_SESSION['email'] = $email;
+                    $_SESSION['post'] = "ASI";
                 echo '<script>
                 window.location="../displaycomplaints.php";
                 </script>';

@@ -13,11 +13,16 @@
     <style type="text/css">
         .registerform{
             margin-top: 5%;
+            width:50vw;
+            max-width: 90vw;
+        }
+        .form-group{
+            margin: 2vw;
         }
     </style>
   </head>
   <body>
-    <div class="registerform container">
+    <div class=" card registerform">
         <form action="storecomplaint.php" method="POST">
           <div class="form-group">
             <label for="inputName">Name</label>
@@ -45,7 +50,7 @@
               <option>Others</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" style="background-color:#333">Submit</button>
         </form>
     </div>
   </body>

@@ -14,7 +14,7 @@
 		.complaintscontainer{
 			margin-left: 10vw;
 			margin-right: 10vw;
-			margin-top: 10vh;
+			margin-top: 5vh;
 		}
 
 		body{
@@ -23,7 +23,20 @@
 	</style>
 </head>
 <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div style="float:left; color:#fff; margin-left:10vw;">
+          <a class="navbar-brand" href="index.html">
+            <img src="./fir.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            FIR
+          </a>
+      </div>
+      <div style="float:right; color:#fff; margin-right:10vw;">
+          <a href="logout.php" style="text-decoration: none; color:#fff;">Log Out</a>
+      </div>
+
+    </nav>
 	<div class="complaintscontainer">
+        <div><h1>Pending Complaint Requests</h1></div><br>
 		<table class="table table-hover table-light">
 		  <thead class="thead">
 		    <tr>
@@ -44,10 +57,19 @@
 
 
 		    <?php
+
+            session_start();
+            if(isset($_SESSION['email'])){
+            }
+            else{
+                echo '<script>
+                window.location="Login/login.html";
+                </script>';
+            }
 		    $i =1;
 		    $con = mysqli_connect('localhost','root','','complaints');
 
-		    $query = "SELECT * from fir WHERE Approved = false";
+		    $query = "SELECT * from fir WHERE Approved = false ORDER BY Reg_DateTime DESC";
 		    $res = mysqli_query($con,$query);
 		    $count = mysqli_num_rows($res);
 

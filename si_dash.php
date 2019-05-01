@@ -14,12 +14,25 @@
  		.complaintscontainer{
  			margin-left: 10vw;
  			margin-right: 10vw;
- 			margin-top: 10vh;
+ 			margin-top: 5vh;
  		}
  	</style>
  </head>
  <body>
+     <nav class="navbar navbar-dark bg-dark">
+         <div style="float:left; color:#fff; margin-left:10vw;">
+           <a class="navbar-brand" href="index.html">
+             <img src="./fir.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+             FIR
+           </a>
+       </div>
+       <div style="float:right; color:#fff; margin-right:10vw;">
+           <a href="logout.php" style="text-decoration: none; color:#fff;">Log Out</a>
+       </div>
+
+     </nav>
  	<div class="complaintscontainer">
+        <div><h1>Approved Complaints</h1></div><br>
  		<table class="table table-hover table-light">
  		  <thead class="thead">
  		    <tr>
@@ -46,7 +59,7 @@
                     $si_email = $_SESSION['email'];
                }else {
                    echo '<script>
-                   window.location="login.html";
+                   window.location="Login/login.html";
                    </script>';
                }
           //
@@ -70,7 +83,7 @@
           $i =1;
           $con = mysqli_connect('localhost','root','','complaints');
 
-          $sql = "select * from fir where SIID = '$cid'";
+          $sql = "select * from fir where SIID = '$cid' ORDER BY Reg_DateTime DESC";
           $result = $con->query($sql);
 
           if($result->num_rows > 0)

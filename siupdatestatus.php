@@ -11,7 +11,6 @@
 
 	    $con->close();
 
-
 		$con3 = mysqli_connect('localhost','root','','complaints');
 
 		$query = "UPDATE cops SET Count = Count - 1 WHERE id ='$cid'";
