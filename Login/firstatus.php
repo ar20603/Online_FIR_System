@@ -70,7 +70,7 @@
         }
         else
         {
-            $message = "No such FIR exists";
+            $message = "Your FIR has been rejected or no such FIR exists";
             echo "<script type='text/javascript'>alert('$message');</script>";
             echo '<script>
             window.location="firlogin.html";

@@ -47,7 +47,7 @@
 
     $pdf->Cell(190,40,'First Investigation Report',0,1,'C');
 
-    $pdf->SetFont('Arial','',12);
+    $pdf->SetFont('Arial','',14);
     $pdf->Cell(170,10,'No: '.$firno,0,1,'R');
 
     $pdf->Cell(50,20,'Name :',0,0,'R');
