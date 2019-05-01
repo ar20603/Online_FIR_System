@@ -31,14 +31,19 @@
 				break;
 		}
 
-		$sql = "insert into fir (Name,Age,Address,Inc_DateTime,Reg_DateTime,Complaint,Section,Category) VALUES ('$name','$age','$address','$incDT',now(),'$typeComplaint','$typeComplaint','$typeComplaint')";
+		$sql = "insert into fir (Name,Age,Address,Inc_DateTime,Reg_DateTime,Complaint,Section,Category) VALUES ('$name','$age','$address','$incDT',now(),'$typeComplaint','$section','$category')";
 		$result = $con->query($sql);
 		$con->close();
+		$message = "Complaint Registered";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+		echo '<script>
+		window.location="index.html";
+		</script>';
 	}
 	else {
-		echo "<h1>Error 404</h1>";
-		//header("Location: http://www.yourwebsite.com/user.php"); /* Redirect browser */
-		//exit();
+		echo '<script>
+		window.location="registercomplaint.php";
+		</script>';
 	}
 
 ?>
