@@ -3,16 +3,28 @@
 <head>
 	<title>FIR</title>
 	<style type="text/css">
-		body{
-			background-color: #ebebeb; 
-		}
+	body{
+		background-image:url(./firpic.jpg);
+  		background-repeat:no-repeat;
+		background-size:cover;
+	}
+	.homebtns{
+		margin-top: 30vh;
+	}
 	</style>
+
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
 	<center>
-		<h1><a href="registercomplaint.php">Register a Complaint</a></h1><br><br>
-		<h1><a href="Login/login.html">Login</a></h1>
+		<div class="btn-group btn-group-lg homebtns" role="group" aria-label="Basic example">
+		  <a href="registercomplaint.php"><button type="button" class="btn btn-primary">Register a Complaint</button></a>
+		  <a href="Login/firlogin.html"><button type="button" class="btn btn-primary">Check your FIR Status</button>
+		  <a href="Login/login.html"><button type="button" class="btn btn-primary">Login</button>
+		</div>
 	</center>
-	
+
 </body>
 </html>

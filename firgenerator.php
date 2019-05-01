@@ -2,7 +2,7 @@
     //call the FPDF library
     require('fpdf17/fpdf.php');
 
-    if(isset($_POST['sno']))
+    if(isset($_POST['dfir']))
 	{
         $sno = $_POST['sno'];
 
@@ -20,8 +20,10 @@
             $name = $row['Name'];
             $age = $row['Age'];
             $address = $row['Address'];
-            $incDT = $row['Inc_DateTime'];
-            $regDT = $row['Reg_DateTime'];
+            $inc = $row['Inc_DateTime'];
+            $incDT = strtotime($inc);
+            $reg = $row['Reg_DateTime'];
+            $regDT = strtotime($reg);
             $typeComplaint = $row['Complaint'];
             $section = $row['Section'];
 		}
@@ -70,17 +72,17 @@
 
     $pdf->Cell(70,20,'Date of Incidence :',0,0,'R');
     $pdf->Cell(10,20,'',0,0,'R');
-    $pdf->Cell(30,20,date("d/m/y",$incDT),0,0,'R');
+    $pdf->Cell(30,20,date("d/m/y",$incDT),0,0,'L');
     $pdf->Cell(20,20,'Time :',0,0,'R');
     $pdf->Cell(10,20,'',0,0,'R');
-    $pdf->Cell(30,20,date("g:i A",$incDT),0,1,'R');
+    $pdf->Cell(30,20,date("g:i A",$incDT),0,1,'L');
 
     $pdf->Cell(70,20,'Date of Registration :',0,0,'R');
     $pdf->Cell(10,20,'',0,0,'R');
-    $pdf->Cell(30,20,date("d/m/y",$regDT),0,0,'R');
+    $pdf->Cell(30,20,date("d/m/y",$regDT),0,0,'L');
     $pdf->Cell(20,20,'Time :',0,0,'R');
     $pdf->Cell(10,20,'',0,0,'R');
-    $pdf->Cell(30,20,date("g:i A",$regDT),0,1,'R');
+    $pdf->Cell(30,20,date("g:i A",$regDT),0,1,'L');
 
 
     $pdf->Output();
