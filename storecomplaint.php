@@ -34,11 +34,22 @@
 		$sql = "insert into fir (Name,Age,Address,Inc_DateTime,Reg_DateTime,Complaint,Section,Category) VALUES ('$name','$age','$address','$incDT',now(),'$typeComplaint','$section','$category')";
 		$result = $con->query($sql);
 		$con->close();
+
+		$con = mysqli_connect('localhost','root','','complaints');
+		$query = "SELECT * from fir ORDER BY SNo ASC";
+		$res = mysqli_query($con,$query);
+		$count = mysqli_num_rows($res);
+
+		if($count>0)
+		{
+			while($row = mysqli_fetch_array($res))
+			{
+				$firid = $row['SNo'];
+			}
+		}
 		$message = "Complaint Registered";
-		echo "<script type='text/javascript'>alert('$message');</script>";
-		echo '<script>
-		window.location="index.html";
-		</script>';
+		echo "<h2>$message. Your Unique ID for registered complaint is $firid. Please, NOTE IT DOWN to monitor the status of FIR online. </h2>";
+
 	}
 	else {
 		echo '<script>

@@ -53,6 +53,10 @@
 	    $result = $con->query($query);
 
 	    $con->close();
+
+		echo '<script>
+		window.location="displaycomplaints.php";
+		</script>';
 	}
 
 	else {

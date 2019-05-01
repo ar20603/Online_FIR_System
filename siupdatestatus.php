@@ -18,6 +18,9 @@
 		$result3 = $con3->query($query);
 
 		$con3->close();
+		echo '<script>
+		window.location="si_dash.php";
+		</script>';
 
 	}
 
