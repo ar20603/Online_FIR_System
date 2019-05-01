@@ -33,19 +33,19 @@
 ?>
 <link rel="stylesheet" href="css/firstat.css">
 <div class="card">
- <h1><?php echo $row['Name']?></h1>
- <p class="title">FIR No. <?php echo $row['SNo']?></p>
- <p>Age <?php echo $row['Age']?></p>
- <p>Address <?php echo $row['Address']?></p>
- <p>Date of Incidence <?php echo date("d/m/y",$incDT)?></p>
- <p>Time of Incidence <?php echo date("g:i A",$incDT)?></p>
- <p>Date of Registration <?php echo date("d/m/y",$regDT)?></p>
- <p>Time of Registration <?php echo date("g:i A",$regDT)?></p>
- <p>Complaint <?php echo $row['Complaint']?></p>
- <p>Section <?php echo $row['Section']?></p>
- <p>Category <?php echo $row['Category']?></p>
- <p>Approved <?php echo $row['Approved']?></p>
- <p>Status <?php echo $row['Status']?></p>
+ <h1><?php echo $row['SNo']?></h1>
+ <p class="title"> Name: <?php echo $row['Name']?></p>
+ <p> Age: <?php echo $row['Age']?></p>
+ <p> Address: <?php echo $row['Address']?></p>
+ <p> Date of Incidence: <?php echo date("d/m/y",$incDT)?></p>
+ <p> Time of Incidence: <?php echo date("g:i A",$incDT)?></p>
+ <p> Date of Registration: <?php echo date("d/m/y",$regDT)?></p>
+ <p> Time of Registration: <?php echo date("g:i A",$regDT)?></p>
+ <p> Complaint: <?php echo $row['Complaint']?></p>
+ <p> Section: <?php echo $row['Section']?></p>
+ <p> Category: <?php echo $row['Category']?></p>
+ <p> Approved: <?php echo $row['Approved']?></p>
+ <p> Status: <?php echo $row['Status']?></p>
 
  <p>
    <form action="../firgenerator.php" method="POST">
