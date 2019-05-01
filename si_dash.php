@@ -1,34 +1,3 @@
-<?php
-
-  session_start();
-
-  $si_email = $_SESSION['email'];
-
-  if($si_id != null){
-    $con = mysqli_connect('localhost','root','','complaints');
-
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "select id from si where email=$si_email";
-    $result = $con->query($sql);
-
-    $row = $result->fetch_assoc();
-    $id = $row['id'];
-
-    $con->close();
-
-    $con = mysqli_connect('localhost','root','','complaints');
-
-    $sql = "select * from fir where SIID = $id";
-    $result = $con->query($sql);
-
-    $con->close();
-  }
-
- ?>
-
  <!DOCTYPE html>
  <html>
  <head>
@@ -64,6 +33,8 @@
  		      <th scope="col">Complaint</th>
  		      <th scope="col">Section</th>
  		      <th scope="col">Category</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
  		    </tr>
  		  </thead>
  		  <tbody>
@@ -75,32 +46,29 @@
 
           $si_email = $_SESSION['email'];
 
-          if($si_id != null){
-            $con = mysqli_connect('localhost','root','','complaints');
 
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
+          $con = mysqli_connect('localhost','root','','complaints');
 
-            $sql = "select id from si where email=$si_email";
-            $result = $con->query($sql);
+          if ($con->connect_error) {
+            die("Connection failed: " . $con->connect_error);
+          }
 
-            $row = $result->fetch_assoc();
-            $id = $row['id'];
+          $sql = "select id from si where email=$si_email";
+          $result = $con->query($sql);
 
-            $con->close();
+          $id = $result['id'];
 
-            $con = mysqli_connect('localhost','root','','complaints');
+          $con->close();
 
-            $sql = "select * from fir where SIID = $id";
-            $result = mysqli_query($con,$sql);
+          $con = mysqli_connect('localhost','root','','complaints');
 
-            $count = mysqli_num_rows($result);
+          $sql = "select * from fir where SIID = $id";
+          $result = $con->query($sql);
 
-            if($count>0)
-    		    {
-    		    	while($row = mysqli_fetch_array($result))
-    		    	{
+          if($result->num_rows > 0)
+  		    {
+  		    	while($row = mysqli_fetch_array($result))
+  		    	{
 
          ?>
  		    		<tr>
@@ -114,6 +82,13 @@
  				      <td><?php echo $row['Complaint'] ?></td>
  				      <td><?php echo $row['Section'] ?></td>
  				      <td><?php echo $row['Category'] ?></td>
+              <td>
+				      	<form action="siupdatestatus.php" method="POST" >
+                  <textarea name="comment"><?php echo $row['Status'] ?></textarea>
+                  <input type="hidden" name="sno" value="<?php echo $row['SNo'] ?>" >
+					      	<button type="submit" name="submit" class="btn btn-outline-success">Submit</button>
+				      	</form>
+				      </td>
  				    </tr>
 
  			<?php
@@ -126,7 +101,7 @@
  		    	echo "<h2>No pending complaints!</h2>";
  		    }
         $con->close();
-      }
+
 
  		    ?>
 
